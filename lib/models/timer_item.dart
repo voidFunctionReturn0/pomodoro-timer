@@ -1,8 +1,8 @@
-class Timer {
+class TimerItem {
   final int? id;
   final int minutes;
 
-  const Timer({
+  const TimerItem({
     this.id,
     required this.minutes,
   });

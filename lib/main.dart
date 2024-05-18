@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro_timer/routes/home.dart';
+import 'package:pomodoro_timer/screens/home.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

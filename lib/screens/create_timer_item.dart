@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro_timer/database_helper.dart';
-import 'package:pomodoro_timer/models/timer.dart';
+import 'package:pomodoro_timer/models/timer_item.dart';
 
 class CreateTimer extends StatelessWidget {
   final DatabaseHelper dbHelper = DatabaseHelper();
@@ -27,7 +27,7 @@ class CreateTimer extends StatelessWidget {
             onPressed: () async {
               int minutes =
                   int.parse(textController.text.replaceAll(RegExp(r"\D"), ""));
-              await dbHelper.insertTimer(Timer(minutes: minutes));
+              await dbHelper.insertTimer(TimerItem(minutes: minutes));
               if (context.mounted) {
                 Navigator.pop(context);
               }

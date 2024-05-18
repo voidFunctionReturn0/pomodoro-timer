@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:pomodoro_timer/models/timer.dart';
+import 'package:pomodoro_timer/models/timer_item.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -23,22 +23,22 @@ class DatabaseHelper {
             minutes INTEGER
           )
         ''');
-        await db.insert('timers', const Timer(minutes: 25).toMap());
-        await db.insert('timers', const Timer(minutes: 5).toMap());
+        await db.insert('timers', const TimerItem(minutes: 25).toMap());
+        await db.insert('timers', const TimerItem(minutes: 5).toMap());
       },
     );
   }
 
-  Future insertTimer(Timer timer) async {
+  Future insertTimer(TimerItem timer) async {
     Database db = await database;
     return await db.insert('timers', timer.toMap());
   }
 
-  Future<List<Timer>> getTimers() async {
+  Future<List<TimerItem>> getTimers() async {
     Database db = await database;
     List<Map<String, dynamic>> maps = await db.query('timers');
     return List.generate(maps.length, (index) {
-      return Timer(
+      return TimerItem(
         id: maps[index]['id'],
         minutes: maps[index]['minutes'],
       );
